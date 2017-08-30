@@ -1,11 +1,11 @@
 var firstObs = true;
 var detector = {
   observer: new MutationObserver(function(mutations) {
+    // since DOM has begun to render, clear load-failure timeout
+    window.clearTimeout(initialObsTimer);
+
     var observation = { mutations: mutations, firstObs: firstObs };
     chrome.runtime.sendMessage(observation, function(resp) {
-      // since DOM has begun to render, clear load-failure timeout
-      window.clearTimeout(initialObsTimer);
-
       if (firstObs) firstObs = false;
       if (resp.disconnect) handlePageLoaded(detector);
     });
