@@ -4,9 +4,8 @@ function init() {
   var timer;
 
   chrome.runtime.onMessage.addListener(function(obs, sender, resp) {
-    if (req.loadingFailed) {
-      resp({ disconnect: true });
-    }
+    if (obs.loadingFailed) resp({ disconnect: true });
+
     // reset the detection flag if a content script is reloaded
     if (obs.firstObs) detectionStarted = false;
 
