@@ -1,10 +1,14 @@
 function detect() {
   var detectionStarted = false;
+  var obs;
   var timer;
 
-  chrome.runtime.onMessage.addListener(function(req, sender, resp) {
+  chrome.runtime.onMessage.addListener(function(obs, sender, resp) {
+    if (req.loadingFailed) {
+      resp({ disconnect: true });
+    }
     // reset the detection flag if a content script is reloaded
-    if (req.firstObs) detectionStarted = false;
+    if (obs.firstObs) detectionStarted = false;
 
     // if new page load, start detection
     if (!detectionStarted) {
@@ -29,6 +33,10 @@ function detect() {
 
 function handlePageLoaded() {
   console.log('background:page-loaded');
+}
+
+function handlePageNotLoaded() {
+  console.log('background:page-not-loaded');
 }
 
 detect();
