@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "Page-loaded Detector",
+  "description": "This extension detects if a webpage has reached a final loaded state.",
+  "version": "0.0.1",
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+        "matches": [ "*://*/*" ],
+        "js": [ "content.js" ]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "logo.png"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/",
+    "webRequest",
+    "*://*/*"
+  ]
+}
