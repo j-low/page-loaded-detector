@@ -18,7 +18,7 @@ var initialObsTimer = setTimeout(function() {
   chrome.runtime.sendMessage({ loadingFailed: true }, function() {
     handlePageNotLoaded(detector);
   });
-}, 500);
+}, 60000);
 
 
 function init(det) {
