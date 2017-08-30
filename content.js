@@ -21,7 +21,7 @@ var initialObsTimer = setTimeout(function() {
 }, 60000);
 
 
-function init(det) {
+function detect(det) {
   det.observer.observe(det.target, det.config);
 }
 
@@ -35,4 +35,4 @@ function handlePageNotLoaded(det) {
   console.log('content-script:page-not-loaded');
 }
 
-init(detector);
+detect(detector);

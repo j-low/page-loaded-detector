@@ -1,4 +1,4 @@
-function detect() {
+function init() {
   var detectionStarted = false;
   var obs;
   var timer;
@@ -39,4 +39,4 @@ function handlePageNotLoaded() {
   console.log('background:page-not-loaded');
 }
 
-detect();
+init();
